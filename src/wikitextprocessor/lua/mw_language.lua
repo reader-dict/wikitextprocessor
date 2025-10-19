@@ -313,7 +313,7 @@ function mw_language.getContentLanguage()
 end
 
 function mw_language.getFallbacksFor(code)
-   print("mw.language.getFallbacksFor called")
+   -- print("mw.language.getFallbacksFor called")
    return fallbacks[code] or {}
 end
 
@@ -323,7 +323,7 @@ function mw_language.isKnownLanguageTag(code)
 end
 
 function mw_language.isSupportedLanguage(code)
-   print("mw.language.isSupportedLanguage called")
+   -- print("mw.language.isSupportedLanguage called")
    -- XXX
    return code == "en"
 end

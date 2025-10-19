@@ -7,7 +7,7 @@ local mw_hash = {
 }
 
 function mw_hash.hashValue(algo, value)
-  print("MW_HASH_HASHVALUE")
+  --print("MW_HASH_HASHVALUE")
 end
 
 function mw_hash.listAlgorithms()
