@@ -313,7 +313,7 @@ function mw_language.getContentLanguage()
 end
 
 function mw_language.getFallbacksFor(code)
-   print("mw.language.getFallbacksFor called")
+   -- print("mw.language.getFallbacksFor called")
    return fallbacks[code] or {}
 end
 
