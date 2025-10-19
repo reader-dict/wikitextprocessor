@@ -65,7 +65,7 @@ function mw_meta.__index(table, key)
 end
 
 function mw.addWarning(text)
-    print("mw.addWarning", text)
+    -- print("mw.addWarning", text)
 end
 
 function mw.allToString(...)
@@ -170,7 +170,7 @@ function mw.dumpObject(obj)
 end
 
 function mw.incrementExpensiveFunctionCount()
-    print("mw.incrementExpensiveFunctionCount")
+    -- print("mw.incrementExpensiveFunctionCount")
 end
 
 function mw.isSubsting()
