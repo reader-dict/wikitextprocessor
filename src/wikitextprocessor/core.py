@@ -1424,7 +1424,7 @@ class Wtp:
                         continue
                     # Template transclusion or parser function call
                     # Limit recursion depth
-                    if len(self.expand_stack) >= 100:
+                    if len(self.expand_stack) >= 150:
                         self.error(
                             "too deep recursion during template expansion",
                             sortid="core/1115",
