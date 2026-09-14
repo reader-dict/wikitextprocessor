@@ -135,7 +135,7 @@ def mw_text_jsondecode(ctx: "Wtp", s: str, flags: int) -> dict[Any, Any]:
         # Convert numeric keys to integers and see if we can make it a
         # table with sequential integer keys.
         for k, v in list(x.items()):
-            if k.isdigit() and int(k) > 0:
+            if k.isdecimal() and int(k) > 0:
                 del x[k]
                 x[int(k)] = recurse(v)
             else:
@@ -440,7 +440,7 @@ def call_lua_sandbox(
                 if m is not None:
                     # named parameter
                     k, arg = m.groups()
-                    if k.isdigit() and int(k) > 0:
+                    if k.isdecimal() and int(k) > 0:
                         # Greek wiktionary uses '0', '00' and '000' as
                         # parameter names...
                         k = int(k)

@@ -651,7 +651,7 @@ class TemplateNode(WikiNode):
                                 equal_sign_index + 1 :
                             ].lstrip()
                             if (
-                                parameter_name.isdigit()
+                                parameter_name.isdecimal()
                                 and int(parameter_name) > 0
                             ):  # value contains "="
                                 parameter_name = int(parameter_name)
@@ -1997,7 +1997,7 @@ def tag_fn(ctx: "Wtp", token: str) -> None:
         # Give a warning on unsupported HTML tags.  WikiText limits the set of
         # tags that are allowed.
         if name not in ctx.allowed_html_tags:
-            if not name.isdigit() and not SILENT_HTML_LIKE:
+            if not name.isdecimal() and not SILENT_HTML_LIKE:
                 ctx.debug(
                     "html tag <{}{}> not allowed in WikiText".format(
                         name, "/" if also_end else ""
