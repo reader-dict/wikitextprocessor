@@ -835,7 +835,7 @@ def ns_fn(
         return ""
     lc_arg = arg.lower()
     for key, ns in wtp.NAMESPACE_DATA.items():
-        if arg.isdigit() and ns["id"] == int(arg):
+        if arg.isdecimal() and ns["id"] == int(arg):
             return ns["name"]
         if ns["name"].lower() == lc_arg or lc_arg == key.lower():
             return ns["name"]
@@ -1122,8 +1122,8 @@ def padleft_fn(
     v = expander(args[0]) if args else ""
     cntstr = expander(args[1]).strip() if len(args) >= 2 else "0"
     pad = expander(args[2]) if len(args) >= 3 else "0"
-    if not cntstr.isdigit():
-        if cntstr.startswith("-") and cntstr[1:].isdigit():
+    if not cntstr.isdecimal():
+        if cntstr.startswith("-") and cntstr[1:].isdecimal():
             pass
         else:
             ctx.warning(
@@ -1147,9 +1147,9 @@ def padright_fn(
     v = expander(args[0]) if args else ""
     cntstr = expander(args[1]).strip() if len(args) >= 2 else "0"
     pad = expander(args[2]) if len(args) >= 3 else "0"
-    if not cntstr.isdigit():
+    if not cntstr.isdecimal():
         cnt = 0
-        if cntstr.startswith("-") and cntstr[1:].isdigit():
+        if cntstr.startswith("-") and cntstr[1:].isdecimal():
             pass
         else:
             ctx.warning(
@@ -1385,7 +1385,7 @@ def pos_fn(
     arg0 = expander(args[0]).strip() if args else ""
     arg1 = expander(args[1]) or " " if len(args) >= 2 else " "
     offsetstr = expander(args[2]).strip() if len(args) >= 3 else ""
-    if not offsetstr or not offsetstr.isdigit():
+    if not offsetstr or not offsetstr.isdecimal():
         offset = 0
     else:
         offset = int(offsetstr)
@@ -1402,7 +1402,7 @@ def rpos_fn(
     arg0 = expander(args[0]).strip() if args else ""
     arg1 = expander(args[1]) or " " if len(args) >= 2 else " "
     offsetstr = expander(args[2]).strip() if len(args) >= 3 else ""
-    if not offsetstr or not offsetstr.isdigit():
+    if not offsetstr or not offsetstr.isdecimal():
         offset = 0
     else:
         offset = int(offsetstr)
@@ -1445,7 +1445,7 @@ def pad_fn(
     cntstr = expander(args[1]).strip() if len(args) >= 2 else ""
     pad = expander(args[2]) if len(args) >= 3 and args[2] else "0"
     direction = expander(args[3]) if len(args) >= 4 else ""
-    if not cntstr.isdigit():
+    if not cntstr.isdecimal():
         ctx.warning(
             "pad length is not integer: {!r}".format(cntstr),
             sortid="parserfns/1133",
@@ -1973,7 +1973,7 @@ def call_parser_function(
             ofs = arg.find("=")
             if ofs >= 0:
                 k = arg[:ofs]
-                if k.isdigit():
+                if k.isdecimal():
                     k = int(k)
                 arg = arg[ofs + 1 :]
             else:

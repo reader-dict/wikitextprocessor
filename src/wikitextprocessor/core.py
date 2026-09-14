@@ -1332,7 +1332,7 @@ class Wtp:
                             expand_args(args[0], argmap), parent, True
                         ).strip()
                         self.expand_stack.pop()
-                        if k.isdigit() and int(k) > 0:
+                        if k.isdecimal() and int(k) > 0:
                             k = int(k)
                         else:
                             k = re.sub(r"\s+", " ", k).strip()
@@ -1550,7 +1550,7 @@ class Wtp:
                             # https://en.wikipedia.org/wiki/Help:Template
                             # (but not around unnamed parameters)
                             k, arg = m2.groups()
-                            if k.isdigit() and int(k) > 0:
+                            if k.isdecimal() and int(k) > 0:
                                 k = int(k)
                             else:
                                 self.expand_stack.append("ARGNAME")
